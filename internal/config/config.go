@@ -13,6 +13,7 @@ type Config struct {
 	HTTP      HTTPConfig `yaml:"http"`
 	Log       LogConfig  `yaml:"log"`
 	DB        DBConfig   `yaml:"db"`
+	HEADLESS  bool       `yaml:"headless" env:"HEADLESS"`
 }
 
 type DBConfig struct {

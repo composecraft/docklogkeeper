@@ -68,8 +68,15 @@ func main() {
 
 	handlerInst := handler.New(cfg, repoInst, usecaseInst, logAdapter)
 
-	if err := handlerInst.Run(); err != nil {
-		stdLog.Fatalf("run router error: %v", err)
+	if !cfg.HEADLESS {
+		if err := handlerInst.Run(); err != nil {
+			stdLog.Fatalf("run router error: %v", err)
+		}
+	} else {
+		fmt.Println("HEADLESS mode ON, the http server hasn't been launched")
+		for {
+			time.Sleep(1 * time.Second)
+		}
 	}
 }
 
